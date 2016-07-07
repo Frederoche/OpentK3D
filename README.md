@@ -1,6 +1,7 @@
 # OpentK3D
 OpenTK C#
-
+![promisechains](https://github.com/Frederoche/OpentK3D/blob/master/Skjermbilde.PNG)
+![promisechains](https://github.com/Frederoche/OpentK3D/blob/master/Skjermbilde2.PNG)
 It's an old Open tk program that generate a simple terrain from a heightmap or from Voronoi noise/diamond square noise. It's also possible to render gresner wave.
 
 
