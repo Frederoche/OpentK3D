@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAC121C7-1586-42D9-84A1-5ECC38CF203C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenTk3D</RootNamespace>
+    <AssemblyName>OpenTk3D</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\OpenTK\1.0\Binaries\OpenTK\Release\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\OpenTK\1.0\Binaries\OpenTK\Release\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainStart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Camera\Camera.csproj">
+      <Project>{2ffad715-5103-415d-b7eb-6fdeb2e5865b}</Project>
+      <Name>Camera</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CubeMap\EnvironmentMap.csproj">
+      <Project>{fa6bd3fb-dace-4f28-829e-cb2a61d00028}</Project>
+      <Name>EnvironmentMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomVertex\CustomVertex.csproj">
+      <Project>{d2d8fd2f-6d4b-41f0-b6d9-85a776c03fc7}</Project>
+      <Name>CustomVertex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameBufferObject\FrameBufferObject.csproj">
+      <Project>{2c728317-9234-409c-8545-a9f658f80931}</Project>
+      <Name>FrameBufferObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Frustum\Frustum.csproj">
+      <Project>{7b8eb4ce-ea1c-4627-b97a-bff8e48243c3}</Project>
+      <Name>Frustum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Keyboard\Keyboard.csproj">
+      <Project>{5fe8ac6c-e117-458e-9c0a-924c63bb1235}</Project>
+      <Name>Keyboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lights\Lights.csproj">
+      <Project>{36f21647-e6ff-41f2-839c-f49d7ea75572}</Project>
+      <Name>Lights</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plane\PrimitiveShapes.csproj">
+      <Project>{00c4e962-bc2f-4c4e-a237-0d2c1b74ea1c}</Project>
+      <Name>PrimitiveShapes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terrain\Landscape.csproj">
+      <Project>{434b1879-bfc5-4253-b483-f724e9bef0fb}</Project>
+      <Name>Landscape</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Textures\Textures.csproj">
+      <Project>{6927be61-ae46-4d8b-a1c6-7ffca716133e}</Project>
+      <Name>Textures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utilities.csproj">
+      <Project>{c3b9ca79-7600-438a-830b-f63c235b900c}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VertexBuffer\VertexBuffer.csproj">
+      <Project>{22bc5edd-c41c-412c-ad93-90bf63ee426c}</Project>
+      <Name>VertexBuffer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
