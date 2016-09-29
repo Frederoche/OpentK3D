@@ -3,10 +3,12 @@ OpenTK C#
 <img src="https://github.com/Frederoche/OpentK3D/blob/master/Skjermbilde.PNG" width="300">
 <img src="https://github.com/Frederoche/OpentK3D/blob/master/Skjermbilde2.PNG" width="300">
 
-It's an old Open tk program that generate a simple terrain from a heightmap or from Voronoi noise/diamond square noise. It's also possible to render gresner wave.
+It's an old OpenTK (C# opengl wrapper) program that generate 
+a simple terrain from a heightmap or from Voronoi noise/diamond square noise. 
+It's also possible to render gresner wave.
 
 
-Use the following keys:
+Use the following keys after running the program:
 - T: get Terrain
 - O: Get ocean
 - Up, right left, dow (move the camera)
