@@ -21,3 +21,5 @@ Use the following keys after running the program:
 - F11 Storm water
 - 1,2,3,4,5 changes the skybox 
 
+# License
+https://opensource.org/licenses/MIT
