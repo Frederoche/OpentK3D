@@ -22,4 +22,4 @@ Use the following keys after running the program:
 - 1,2,3,4,5 changes the skybox 
 
 # License
-https://github.com/Frederoche/OpentK3D/blob/master/Licence.js
+https://github.com/Frederoche/OpentK3D/blob/master/Licence.md
