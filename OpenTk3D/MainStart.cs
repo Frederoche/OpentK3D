@@ -94,10 +94,10 @@ namespace OpenTk3D
             _water = new Water(WaterWidth, WaterHeight);
             _water.Load();
 
-            _seaBed = PlaneFactory.Create(true, new VBO() { Position = new Vector3(0, -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 0) },
-                                                       new VBO() { Position = new Vector3(0, -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 1) },
-                                                       new VBO() { Position = new Vector3(WaterWidth , -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 1) },
-                                                       new VBO() { Position = new Vector3(WaterWidth , -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 0) },
+            _seaBed = PlaneFactory.Create(true, new Vbo() { Position = new Vector3(0, -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 0) },
+                                                       new Vbo() { Position = new Vector3(0, -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 1) },
+                                                       new Vbo() { Position = new Vector3(WaterWidth , -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 1) },
+                                                       new Vbo() { Position = new Vector3(WaterWidth , -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 0) },
                                                        Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.seabed.jpg"), TextureWrapMode.ClampToEdge);
             _seaBed.Load();
 

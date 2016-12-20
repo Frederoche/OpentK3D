@@ -43,28 +43,28 @@ namespace EnvironmentMap
             MyProgramHandler = new int[5];
             CubeCenterPosition = new Vector3(Width / 2 + centeredAt.X, Width / 2 + centeredAt.Y, Width / 2 +centeredAt.Z);
             IPlane backPlane = PlaneFactory.Create(invertAllFaces,
-                                                    new VBO()
+                                                    new Vbo()
                                                     {
                                                         Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f +centeredAt.Z),
                                                         Normal = new Vector3(0, 0, 1),
                                                         TexCoord = new Vector2(1, 1)
                                                     },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, 0, 1),
                                                        TexCoord = new Vector2(1, 0)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, 0, 1),
                                                        TexCoord = new Vector2(0, 0)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, 0, 1),
@@ -72,83 +72,83 @@ namespace EnvironmentMap
                                                    }, backTextureImage, OpenTK.Graphics.OpenGL.TextureWrapMode.ClampToEdge);
 
             IPlane frontPlane = PlaneFactory.Create(invertAllFaces,
-                                                    new VBO()
+                                                    new Vbo()
                                                     {
                                                         Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                         Normal = new Vector3(0, 0, 1),
                                                         TexCoord = new Vector2(1, 1)
                                                     },
 
-                                                     new VBO()
+                                                     new Vbo()
                                                      {
                                                          Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                          Normal = new Vector3(0, 0, 1),
                                                          TexCoord = new Vector2(1, 0)
                                                      },
 
-                                                     new VBO()
+                                                     new Vbo()
                                                      {
                                                          Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                          Normal = new Vector3(0, 0, 1),
                                                          TexCoord = new Vector2(0, 0)
                                                      },
 
-                                                     new VBO()
+                                                     new Vbo()
                                                      {
                                                          Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                          Normal = new Vector3(0, 0, 1),
                                                          TexCoord = new Vector2(0, 1)
                                                      }, frontTextureImage, OpenTK.Graphics.OpenGL.TextureWrapMode.ClampToEdge);
             IPlane topPlane = PlaneFactory.Create(invertAllFaces,
-                                                    new VBO()
+                                                    new Vbo()
                                                     {
                                                         Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                         Normal = new Vector3(0, -1, 0),
                                                         TexCoord = new Vector2(0, 0)
                                                     },
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),
                                                        TexCoord = new Vector2(0, 1)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),
                                                        TexCoord = new Vector2(1, 1)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),
                                                        TexCoord = new Vector2(1, 0)
                                                    }, topTextureImage, OpenTK.Graphics.OpenGL.TextureWrapMode.ClampToEdge);
 
-            IPlane leftPlane = PlaneFactory.Create(invertAllFaces,new VBO()
+            IPlane leftPlane = PlaneFactory.Create(invertAllFaces,new Vbo()
                                                     {
                                                         Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                         Normal = new Vector3(-1, 0, 0),
                                                         TexCoord = new Vector2(1, 1)
                                                     },
 
-                                                  new VBO()
+                                                  new Vbo()
                                                   {
                                                       Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                       Normal = new Vector3(1, 0, 0),
                                                       TexCoord = new Vector2(1, 0)
                                                   },
 
-                                                  new VBO()
+                                                  new Vbo()
                                                   {
                                                       Position = new Vector3(-Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                       Normal = new Vector3(1, 0, 0),
                                                       TexCoord = new Vector2(0, 0)
                                                   },
 
-                                                  new VBO()
+                                                  new Vbo()
                                                   {
                                                       Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                       Normal = new Vector3(1, 0, 0),
@@ -157,28 +157,28 @@ namespace EnvironmentMap
 
 
             IPlane rightPlane = PlaneFactory.Create(invertAllFaces,
-                                                new VBO()
+                                                new Vbo()
                                                 {
                                                     Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                     Normal = new Vector3(1, 0, 0),
                                                     TexCoord = new Vector2(1, 1)
                                                 },
 
-                                                 new VBO()
+                                                 new Vbo()
                                                  {
                                                      Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                      Normal = new Vector3(1, 0, 0),
                                                      TexCoord = new Vector2(1, 0)
                                                  },
 
-                                                 new VBO()
+                                                 new Vbo()
                                                  {
                                                      Position = new Vector3(Width / 2.0f + centeredAt.X, Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                      Normal = new Vector3(1, 0, 0),
                                                      TexCoord = new Vector2(0, 0)
                                                  },
 
-                                                 new VBO()
+                                                 new Vbo()
                                                  {
                                                      Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                      Normal = new Vector3(1, 0, 0),
@@ -186,28 +186,28 @@ namespace EnvironmentMap
                                                  }, rightTextureImage, OpenTK.Graphics.OpenGL.TextureWrapMode.ClampToEdge);
 
             IPlane bottomPlane = PlaneFactory.Create(invertAllFaces,
-                                                    new VBO()
+                                                    new Vbo()
                                                     {
                                                         Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f + centeredAt.Z),
                                                         Normal = new Vector3(0, -1, 0),
                                                         TexCoord = new Vector2(0, 0)
                                                     },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(-Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),
                                                        TexCoord = new Vector2(0, 1)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, -Width / 2.0f + centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),
                                                        TexCoord = new Vector2(1, 1)
                                                    },
 
-                                                   new VBO()
+                                                   new Vbo()
                                                    {
                                                        Position = new Vector3(Width / 2.0f + centeredAt.X, -Width / 2.0f + centeredAt.Y, Width / 2.0f +centeredAt.Z),
                                                        Normal = new Vector3(0, -1, 0),

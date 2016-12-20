@@ -15,7 +15,7 @@ namespace VertexBuffers
 {
     public class VertexBuffer : ShaderProgram
     {
-        public VBO[] Vertices {get;set;}
+        public Vbo[] Vertices {get;set;}
         public List<int> Indices { get; set; }
 
         public ITexture Texture1 { get; set; }
@@ -39,7 +39,7 @@ namespace VertexBuffers
 
         public VertexBuffer(){}
 
-        public VertexBuffer(VBO[] vertices, List<int> indices,  params ITexture[] textures)
+        public VertexBuffer(Vbo[] vertices, List<int> indices,  params ITexture[] textures)
         {
             Vertices = vertices;
             Indices = indices;
@@ -90,7 +90,7 @@ namespace VertexBuffers
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
-        public virtual void UpdateBuffer(VBO[] vertices)
+        public virtual void UpdateBuffer(Vbo[] vertices)
         {
             GL.BindVertexArray(MyVertexArrayHandler);
             GL.UseProgram(MyProgramHandler);

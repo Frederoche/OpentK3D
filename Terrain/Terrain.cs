@@ -7,6 +7,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Lights;
 using Utilities;
+using Utils;
 using VertexBuffers;
 
 
@@ -37,7 +38,7 @@ namespace Landscape
             Width = heightMap.Width;
             Height = heightMap.Height;
             heights = new float[Width, Height];
-            Vertices = new VBO[Width*Height];
+            Vertices = new Vbo[Width*Height];
             Indices = new List<int>();
         }
 
@@ -80,7 +81,7 @@ namespace Landscape
         {
             for (int i = 0; i < Width; i++)
                 for (int j = 0; j < Height; j++)
-                    Vertices[i + j * Width] = new VBO()
+                    Vertices[i + j * Width] = new Vbo()
                     {
                         Position = new Vector3((float)-Width  +  i, (float) heights[i, j], (float)-Height + j),
                         TexCoord = new Vector2((float)i / 10, (float)j / 10),
@@ -128,7 +129,7 @@ namespace Landscape
             Width = Size;
             Height = Size;
             heights = new float[Size,Size];
-            Vertices = new VBO[Width * Height];
+            Vertices = new Vbo[Width * Height];
 
             for (int i = 0; i < Width; i++)
             {

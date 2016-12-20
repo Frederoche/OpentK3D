@@ -19,9 +19,9 @@ namespace PrimitiveShapes
         public Vector3[] Points { get; private set; }
         public bool IsRender { get; set; }
 
-        public Plane(bool invertAllFaces, VBO p1, VBO p2, VBO p3, VBO p4)
+        public Plane(bool invertAllFaces, Vbo p1, Vbo p2, Vbo p3, Vbo p4)
         {
-            Vertices = new VBO[4];
+            Vertices = new Vbo[4];
 
             if (invertAllFaces)
             {
@@ -53,7 +53,7 @@ namespace PrimitiveShapes
         }
 
 
-        public Plane(bool invertAllFaces, VBO p1, VBO p2, VBO p3, VBO p4, Image textureImage, TextureWrapMode textureWrapMode = TextureWrapMode.ClampToEdge) : this(invertAllFaces, p1, p2, p3, p4)
+        public Plane(bool invertAllFaces, Vbo p1, Vbo p2, Vbo p3, Vbo p4, Image textureImage, TextureWrapMode textureWrapMode = TextureWrapMode.ClampToEdge) : this(invertAllFaces, p1, p2, p3, p4)
         {
             if (textureImage != null)
                 Texture1 = TextureFactory.Create(textureImage, textureWrapMode);
