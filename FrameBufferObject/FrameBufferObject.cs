@@ -1,5 +1,4 @@
-﻿using Camera;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Drawing;
@@ -12,12 +11,11 @@ namespace FrameBufferObject
         public int TextureHandle { get; set; }
 
         private int FrameBufferHandle { get; set; }
-        private int RenderBufferHandle { get; set; }
 
         public ITexture FrameBufferTexture { get; set; }
 
-        private int Width{get;set;}
-        private int Height { get; set; }
+        private int Width{get;}
+        private int Height { get;  }
 
         public FrameBufferObject(int width, int height)
         {
@@ -30,7 +28,7 @@ namespace FrameBufferObject
 
         public void Load()
         {
-            int frameBufferHandle = 0;
+            int frameBufferHandle;
             GL.GenFramebuffers(1, out frameBufferHandle);
             GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, frameBufferHandle);
             GL.FramebufferTexture2D(FramebufferTarget.DrawFramebuffer, FramebufferAttachment.ColorAttachment0Ext, TextureTarget.Texture2D, TextureHandle ,0);

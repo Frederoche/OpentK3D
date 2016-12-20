@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTk3D", "OpenTk3D\OpenTk3D.csproj", "{EAC121C7-1586-42D9-84A1-5ECC38CF203C}"
 EndProject
@@ -28,8 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameBufferObject", "FrameBufferObject\FrameBufferObject.csproj", "{2C728317-9234-409C-8545-A9F658F80931}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{8F8192C6-8455-4DAA-BE06-61DCBA83CD6D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frustum", "Frustum\Frustum.csproj", "{7B8EB4CE-EA1C-4627-B97A-BFF8E48243C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,10 +87,6 @@ Global
 		{8F8192C6-8455-4DAA-BE06-61DCBA83CD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F8192C6-8455-4DAA-BE06-61DCBA83CD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F8192C6-8455-4DAA-BE06-61DCBA83CD6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B8EB4CE-EA1C-4627-B97A-BFF8E48243C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B8EB4CE-EA1C-4627-B97A-BFF8E48243C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B8EB4CE-EA1C-4627-B97A-BFF8E48243C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B8EB4CE-EA1C-4627-B97A-BFF8E48243C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

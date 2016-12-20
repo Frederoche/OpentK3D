@@ -3,11 +3,10 @@ using System;
 using Camera;
 using OpenTK.Input;
 using OpenTK.Graphics.OpenGL;
-using Utilities;
 using Lights;
 using EnvironmentMap;
-using System.Threading.Tasks;
 using Landscape;
+using Utils;
 
 namespace Keyboard
 {
@@ -135,12 +134,12 @@ namespace Keyboard
         private static void ChangeCubeMap(ref ICubeMap cubeMap, string cubeNameType)
         {
             cubeMap = CubeMapFactory.Create(2500, false, new Vector3(0, 0, 0),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_front.jpg", cubeNameType)),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_back.jpg", cubeNameType)),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_back.jpg", cubeNameType)),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_top.jpg", cubeNameType)),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_left.jpg", cubeNameType)),
-                                                  Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_right.jpg", cubeNameType))
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_front.jpg", cubeNameType)),
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_back.jpg", cubeNameType)),
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_back.jpg", cubeNameType)),
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_top.jpg", cubeNameType)),
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_left.jpg", cubeNameType)),
+                                                  Utils.Utils.GetImageResource<ICubeMap>(string.Format("EnvironmentMap.Textures.{0}.{0}_right.jpg", cubeNameType))
                                                   );
             cubeMap.Load();
         }

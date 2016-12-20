@@ -14,7 +14,7 @@ namespace UnitTest
         [TestMethod]
         public void Plane_OK()
         {
-            Image image = Utils.GetImageResource<Terrain>("Landscape.Terrains.Grass.png");
+            Image image = Utils.Utils.GetImageResource<Terrain>("Landscape.Terrains.Grass.png");
             
 
             IPlane plane = PlaneFactory.Create(false,

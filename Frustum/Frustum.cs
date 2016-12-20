@@ -77,8 +77,8 @@ namespace Frustum
             GenerateVertices();
             GenerateIndices();
 
-            CreateShaderProgram(Utils.GetStreamedResource<IFrustum>("Frustum.Shader.FrustumVertexShader.glsl"),
-                                Utils.GetStreamedResource<IFrustum>("Frustum.Shader.FrustumFragmentShader.glsl"));
+            CreateShaderProgram(Utils.Utils.GetStreamedResource<IFrustum>("Frustum.Shader.FrustumVertexShader.glsl"),
+                                Utils.Utils.GetStreamedResource<IFrustum>("Frustum.Shader.FrustumFragmentShader.glsl"));
 
             CreateBuffer(BufferUsageHint.StreamDraw);
 

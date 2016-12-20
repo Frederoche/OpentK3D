@@ -2,21 +2,16 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Utilities;
 
 namespace VertexBuffers
 {
     public class ShaderProgram : IShaderProgram
     {
-        protected int MyVertexShaderHandle = 0;
-        protected int MyFragmentShaderHandle = 0;
-        protected int MyGeometryShaderHandle = 0;
+        protected int MyVertexShaderHandle;
+        protected int MyFragmentShaderHandle;
+        protected int MyGeometryShaderHandle;
 
         public int MyProgramHandler { get; set; }
-
-        private string VertexShaderNamespace { get; set; }
-        private string FragmantShaderNamespace { get; set; }
-        private string GeometryShaderNamespace { get; set; }
 
         public int CreateShaderProgram(Stream vertexShaderStream, Stream FragmentShaderStream, Stream GeometryShaderStream = null)
         {
@@ -72,10 +67,10 @@ namespace VertexBuffers
             string vertexInfo, fragmentInfo;
 
             GL.GetShaderInfoLog(MyVertexShaderHandle, out vertexInfo);
-            Utils.Log(vertexInfo);
+            Utils.Utils.Log(vertexInfo);
             Console.WriteLine(vertexInfo);
             GL.GetShaderInfoLog(MyFragmentShaderHandle, out fragmentInfo);
-            Utils.Log(fragmentInfo);
+            Utils.Utils.Log(fragmentInfo);
             Console.WriteLine(fragmentInfo);
             return MyProgramHandler; 
         }

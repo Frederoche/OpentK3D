@@ -11,104 +11,98 @@ using Landscape;
 using Lights;
 using FrameBufferObject;
 using System.Linq;
-using Utilities;
 using PrimitiveShapes;
 using CustomVertex;
-using Frustum;
+using Utils;
 
 
 namespace OpenTk3D
 {
     class MainStart
     {
-        private static ICamera  Camera;
+        private static ICamera  _camera;
         
-        private static ICubeMap CubeMap;
-        private static ICubeMap WoodenChest;
+        private static ICubeMap _cubeMap;
+        private static ICubeMap _woodenChest;
 
-        private static ITerrain Terrain;
-        private static ILight   Light;
-        private static IFrustum Frustum;
+        private static ITerrain _terrain;
+        private static ILight   _light;
+        private static IPlane _seaBed;
 
-        private static IPlane SeaBed;
+        private static IFrameBufferObject _birdTexture;
 
-        private static IFrameBufferObject BirdTexture;
+        private static IWater _water;
 
-        private static IWater Water;
+        private static Vector3 _cameraPosition0 = new Vector3(-378.0f, 75.0f, -8.0f);
+        private static readonly Vector3 LookAt0 = new Vector3(0, 0, 0);
 
-        private static Vector3 CameraPosition0 = new Vector3(-378.0f, 75.0f, -8.0f);
-        private static Vector3 LookAt0 = new Vector3(0, 0, 0);
+        private static float _cameraAngle = 0.898f;
 
-        private static float CameraAngle = 0.898f;
+        private static Matrix4 _viewMatrix;
+        private static Matrix4 _birdViewMatrix;
+        private static Matrix4 _invertedViewMatrix;
+        private static Matrix4 _projectionMatrix;
 
-        private static Matrix4 ViewMatrix;
-        private static Matrix4 BirdViewMatrix;
-        private static Matrix4 InvertedViewMatrix;
-        private static Matrix4 ProjectionMatrix;
+        private const int WindowHeight = 724;
+        private const int WindowWidth  = 1024;
+        private const float Fovy = (float) (Math.PI / 2.0);
+        private const float NearPlane = 1.0f;
+        private const float FarPlane  = 5000.0f;
 
-        private const int WINDOW_HEIGHT = 724;
-        private const int WINDOW_WIDTH  = 1024;
-        private const float FOVY = (float) (Math.PI / 2.0);
-        private const float NEAR_PLANE = 1.0f;
-        private const float FAR_PLANE  = 5000.0f;
-
-        private const int WATER_WIDTH = 512;
-        private const int WATER_HEIGHT = 512;
+        private const int WaterWidth = 512;
+        private const int WaterHeight = 512;
 
         [STAThread]
         static void Main(string[] args) 
         {
-            var gameWindow = new GameWindow(WINDOW_WIDTH, WINDOW_HEIGHT, new GraphicsMode(32, 24, 0, 8), "Ocean sim (Grestner waves) and terrain", GameWindowFlags.Default, DisplayDevice.AvailableDisplays.Last());
+            var gameWindow = new GameWindow(WindowWidth, WindowHeight, new GraphicsMode(32, 24, 0, 8), "Ocean sim (Grestner waves) and terrain", GameWindowFlags.Default, DisplayDevice.AvailableDisplays.Last());
 
             gameWindow.MakeCurrent();
             gameWindow.Context.LoadAll();
 
-            Utils.GLRenderProperties(WINDOW_WIDTH, WINDOW_HEIGHT);
+            Utils.Utils.GLRenderProperties(WindowWidth, WindowHeight);
 
-            Camera = Factory<Camera.Camera>.Create(CameraPosition0, LookAt0, new Vector3(0, 1, 0));
+            _camera = Factory<Camera.Camera>.Create(_cameraPosition0, LookAt0, new Vector3(0, 1, 0));
             
 
-            Light = LightFactory.Create(new Vector3((float) -350.0f , 300.0f, 0.0f), new Color4(255, 255, 255, 1), new Color4(255, 255, 255, 1), new Color4(252,252,252,1), LightName.Light0);
-            Light.Load();
+            _light = LightFactory.Create(new Vector3(-350.0f , 300.0f, 0.0f), new Color4(255, 255, 255, 1), new Color4(255, 255, 255, 1), new Color4(252,252,252,1), LightName.Light0);
+            _light.Load();
 
 
 
-            Terrain = Terrainfactory.Create(Utils.GetImageResource<ITerrain>("Landscape.Terrains.TOPOMAP1.GIF"),
-                                            Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"),
-                                            Utils.GetImageResource<ITerrain>("Landscape.Terrains.sand.jpg"),
-                                            Utils.GetImageResource<ITerrain>("Landscape.Terrains.Grass.png"),
-                                            Utils.GetImageResource<ITerrain>("Landscape.Terrains.Rock.png"));
-            Terrain.Load();
+            _terrain = Terrainfactory.Create(Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.TOPOMAP1.GIF"),
+                                            Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"),
+                                            Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.sand.jpg"),
+                                            Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.Grass.png"),
+                                            Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.Rock.png"));
+            _terrain.Load();
 
             
-            CubeMap = CubeMapFactory.Create(2500, false, new Vector3(256, 0, 256), 
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_front.jpg"),
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_back.jpg"),
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_front.jpg"),
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_top.jpg"),
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_left.jpg"),
-                                                  Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_right.jpg")
+            _cubeMap = CubeMapFactory.Create(2500, false, new Vector3(256, 0, 256), 
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_front.jpg"),
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_back.jpg"),
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_front.jpg"),
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_top.jpg"),
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_left.jpg"),
+                                                  Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.Desert.Desert_right.jpg")
                                                   );
-            CubeMap.Load();
+            _cubeMap.Load();
 
-            WoodenChest = CubeMapFactory.Create(100, true, new Vector3(256, 150, 256), Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.plank.jpg"));
-            WoodenChest.Load();
+            _woodenChest = CubeMapFactory.Create(100, true, new Vector3(256, 150, 256), Utils.Utils.GetImageResource<ICubeMap>("EnvironmentMap.Textures.plank.jpg"));
+            _woodenChest.Load();
 
-            Water = new Water(WATER_WIDTH, WATER_HEIGHT);
-            Water.Load();
+            _water = new Water(WaterWidth, WaterHeight);
+            _water.Load();
 
-            SeaBed = PlaneFactory.Create(true, new VBO() { Position = new Vector3(0, -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 0) },
-                                                       new VBO() { Position = new Vector3(0, -70, WATER_HEIGHT ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 1) },
-                                                       new VBO() { Position = new Vector3(WATER_WIDTH , -70, WATER_HEIGHT ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 1) },
-                                                       new VBO() { Position = new Vector3(WATER_WIDTH , -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 0) },
-                                                       Utils.GetImageResource<ITerrain>("Landscape.Terrains.seabed.jpg"), TextureWrapMode.ClampToEdge);
-            SeaBed.Load();
+            _seaBed = PlaneFactory.Create(true, new VBO() { Position = new Vector3(0, -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 0) },
+                                                       new VBO() { Position = new Vector3(0, -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(0, 1) },
+                                                       new VBO() { Position = new Vector3(WaterWidth , -70, WaterHeight ), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 1) },
+                                                       new VBO() { Position = new Vector3(WaterWidth , -70, 0), Normal = new Vector3(0, 1, 0), TexCoord = new Vector2(1, 0) },
+                                                       Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.seabed.jpg"), TextureWrapMode.ClampToEdge);
+            _seaBed.Load();
 
-            Frustum = new Frustum.Frustum(FAR_PLANE, NEAR_PLANE, (float)WINDOW_WIDTH / WINDOW_HEIGHT, FOVY);
-            Frustum.Load();
-
-            BirdTexture = FramBufferOBjectFactory.Create(512, 512);
-            BirdTexture.Load();
+            _birdTexture = FramBufferOBjectFactory.Create(512, 512);
+            _birdTexture.Load();
 
             gameWindow.RenderFrame += gameWindow_RenderFrame;
             gameWindow.UpdateFrame += gameWindow_UpdateFrame;
@@ -119,12 +113,9 @@ namespace OpenTk3D
 
         static void gameWindow_UpdateFrame(object sender, FrameEventArgs e) 
         {
-            ViewMatrix = Matrix4.LookAt(Camera.CameraPosition, Camera.CameraLookAt, Camera.UpVector);
-            BirdViewMatrix = Matrix4.LookAt(new Vector3(Camera.CameraPosition.X, Camera.CameraPosition.Y + 300, Camera.CameraPosition.Z), new Vector3(Camera.CameraPosition.X, Camera.CameraPosition.Y, Camera.CameraPosition.Z), new Vector3(0, 0, 1));
-            ProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(FOVY, (float)WINDOW_WIDTH / WINDOW_HEIGHT, NEAR_PLANE, FAR_PLANE);
-
-            Frustum.ExctractPlanes(Camera);
-            
+            _viewMatrix = Matrix4.LookAt(_camera.CameraPosition, _camera.CameraLookAt, _camera.UpVector);
+            _birdViewMatrix = Matrix4.LookAt(new Vector3(_camera.CameraPosition.X, _camera.CameraPosition.Y + 300, _camera.CameraPosition.Z), new Vector3(_camera.CameraPosition.X, _camera.CameraPosition.Y, _camera.CameraPosition.Z), new Vector3(0, 0, 1));
+            _projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(Fovy, (float)WindowWidth / WindowHeight, NearPlane, FarPlane);
 
             GameWindow gameWindow = (GameWindow)sender;
             gameWindow.Keyboard.KeyRepeat = true;
@@ -133,26 +124,26 @@ namespace OpenTk3D
         static void gameWindow_RenderFrame(object sender, FrameEventArgs e)
         {
             
-            InvertedViewMatrix = Matrix4.Mult(ViewMatrix, new Matrix4(1, 0, 0, 0,
+            _invertedViewMatrix = Matrix4.Mult(_viewMatrix, new Matrix4(1, 0, 0, 0,
                                                                       0, -1, 0, 0,
                                                                       0, 0, 1, 0,
                                                                       0, 0, 0, 1));
             
-            BirdTexture.GenerateProjectiveTexture(BeginMode.Triangles, BirdViewMatrix, ProjectionMatrix,  null, RenderWholeWorld);
+            _birdTexture.GenerateProjectiveTexture(BeginMode.Triangles, _birdViewMatrix, _projectionMatrix,  null, RenderWholeWorld);
 
-            Water.MakeReflectionTextures(BeginMode.Triangles, ViewMatrix, InvertedViewMatrix, ProjectionMatrix, Water.ReflectionClipPlane, RenderAllWithoutWater);
-            Water.MakeRefractionTextures(BeginMode.Triangles, ViewMatrix, InvertedViewMatrix, ProjectionMatrix, Water.RefractionClipPlane, RenderAllWithoutWater);
+            _water.MakeReflectionTextures(BeginMode.Triangles, _viewMatrix, _invertedViewMatrix, _projectionMatrix, _water.ReflectionClipPlane, RenderAllWithoutWater);
+            _water.MakeRefractionTextures(BeginMode.Triangles, _viewMatrix, _invertedViewMatrix, _projectionMatrix, _water.RefractionClipPlane, RenderAllWithoutWater);
             
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 
             GL.ClearColor(Color.CornflowerBlue);
             {
-                RenderWholeWorld(BeginMode.Triangles, Matrix4.Identity, ProjectionMatrix, ViewMatrix);
+                RenderWholeWorld(BeginMode.Triangles, Matrix4.Identity, _projectionMatrix, _viewMatrix);
             }
             GL.Flush();
             
-            Utils.MakeBirdMap(BirdTexture.TextureHandle, UIInputData.IsMapOn);
+            Utils.Utils.MakeBirdMap(_birdTexture.TextureHandle, UIInputData.IsMapOn);
            
 
             GameWindow gameWindow = (GameWindow)sender;
@@ -162,35 +153,34 @@ namespace OpenTk3D
         private static void RenderWholeWorld(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, float[] clipPlaneEq = null)
         {
             RenderAllWithoutWater(mode,worldMatrix, projectionMatrix, viewMatrix, clipPlaneEq);
-            Water.Render(mode, worldMatrix, viewMatrix, projectionMatrix, Light, Camera, UIInputData.IsOceanOn);            
+            _water.Render(mode, worldMatrix, viewMatrix, projectionMatrix, _light, _camera, UIInputData.IsOceanOn);            
         }
 
         private static void RenderAllWithoutWater(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, float[] clipPlaneEq)
         {
             GL.Disable(EnableCap.DepthTest);
             {
-              Matrix4 mat = Matrix4.CreateTranslation(Camera.CameraPosition);
-              Matrix4 tempMatrix = viewMatrix;
-              tempMatrix = Matrix4.Mult(mat, viewMatrix);
+              Matrix4 mat = Matrix4.CreateTranslation(_camera.CameraPosition);
+                var tempMatrix = Matrix4.Mult(mat, viewMatrix);
 
-              CubeMap.Render(mode, worldMatrix, projectionMatrix, tempMatrix, UIInputData.IsCubeMapOn, null, clipPlaneEq);
+              _cubeMap.Render(mode, worldMatrix, projectionMatrix, tempMatrix, UIInputData.IsCubeMapOn, clipPlaneEq);
             }
             GL.Enable(EnableCap.DepthTest);
 
-            WoodenChest.Render(mode, worldMatrix, projectionMatrix, viewMatrix, UIInputData.IsWoodenChestOn,Frustum);
+            _woodenChest.Render(mode, worldMatrix, projectionMatrix, viewMatrix, UIInputData.IsWoodenChestOn);
 
-            Terrain.Render(mode, worldMatrix, viewMatrix, projectionMatrix, Light, UIInputData.IsTerrainOn);
-            Light.Stop();
-            //Frustum.ShowFrustum(ProjectionMatrix, viewMatrix);
-            Light.Start();
-            if (UIInputData.IsOceanOn && (Frustum.SquareInFrustum(SeaBed.Points) == 1 || Frustum.SquareInFrustum(SeaBed.Points) == 2))
-                SeaBed.Render(mode, worldMatrix, projectionMatrix, viewMatrix);
+            _terrain.Render(mode, worldMatrix, viewMatrix, projectionMatrix, _light, UIInputData.IsTerrainOn);
+            _light.Stop();
+            
+            _light.Start();
+            if (UIInputData.IsOceanOn)
+                _seaBed.Render(mode, worldMatrix, projectionMatrix, viewMatrix);
          
         }
 
         static void Keyboard_KeyDown(object sender, KeyboardKeyEventArgs e)
         {
-            KeyBoard.Keyboard_KeyDown(ref CubeMap, Camera, Light, Terrain, ref CameraPosition0, ref CameraAngle,FAR_PLANE, e);
+            KeyBoard.Keyboard_KeyDown(ref _cubeMap, _camera, _light, _terrain, ref _cameraPosition0, ref _cameraAngle,FarPlane, e);
         }
     }
 }

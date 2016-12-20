@@ -1,6 +1,4 @@
-﻿using OpenTK;
-using OpenTK.Graphics.OpenGL;
-using System;
+﻿using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 
 namespace Textures
@@ -14,7 +12,7 @@ namespace Textures
         int Width { get; set; }
         int Height { get; set; }
         void Load();
-        void LoadEmptyTexture(PixelInternalFormat pixelInternalFormat, OpenTK.Graphics.OpenGL.PixelFormat pixelFormat, bool isAnisotropic);
+        void LoadEmptyTexture(PixelInternalFormat pixelInternalFormat, PixelFormat pixelFormat, bool isAnisotropic);
         int LoadData(SizedInternalFormat format,float[,] dataArray);
     }
 }

@@ -54,10 +54,6 @@
       <Project>{d2d8fd2f-6d4b-41f0-b6d9-85a776c03fc7}</Project>
       <Name>CustomVertex</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Frustum\Frustum.csproj">
-      <Project>{7b8eb4ce-ea1c-4627-b97a-bff8e48243c3}</Project>
-      <Name>Frustum</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lights\Lights.csproj">
       <Project>{36f21647-e6ff-41f2-839c-f49d7ea75572}</Project>
       <Name>Lights</Name>

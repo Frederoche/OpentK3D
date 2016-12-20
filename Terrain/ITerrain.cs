@@ -1,8 +1,6 @@
-﻿using Camera;
-using Lights;
+﻿using Lights;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using System.Collections.Generic;
 
 namespace Landscape
 {

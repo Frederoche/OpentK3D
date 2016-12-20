@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Drawing;
 using OpenTK;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using Textures;
-using OpenTK.Graphics;
 
-namespace Utilities
+namespace Utils
 {
     public class Factory<T>
     {
@@ -38,17 +38,14 @@ namespace Utilities
         public static float FresnelParameter { get; set; }
         public static bool IsWaterCalm { get; set; }
         public static bool isDiffuseOn { get; set; }
-        private static float[] _stormParameter = new float[] { 1, 1, 1, 1, 1 };
-        public static float[] StormParameter { get { return _stormParameter; } set { _stormParameter = value; } }
+        public static float[] StormParameter { get; set; } = new float[] { 1, 1, 1, 1, 1 };
     }
 
     public class Utils
     {
         public static void Log(string lines)
         {
-            StreamWriter writer = new StreamWriter("C:\\temp\\Log.txt",true);
-            writer.WriteLine(lines);
-            writer.Close();
+           
         }
 
         public static Image GetImageResource<TAssembly>(string embeddedResource)

@@ -63,8 +63,8 @@ namespace PrimitiveShapes
 
         public void Load(BufferUsageHint bufferusageHint = BufferUsageHint.StaticDraw)
         {
-            CreateShaderProgram(Utils.GetStreamedResource<Plane>("PrimitiveShapes.Shaders.PlaneVertexShader.glsl"),
-                                Utils.GetStreamedResource<Plane>("PrimitiveShapes.Shaders.PlaneFragmentShader.glsl"));
+            CreateShaderProgram(Utils.Utils.GetStreamedResource<Plane>("PrimitiveShapes.Shaders.PlaneVertexShader.glsl"),
+                                Utils.Utils.GetStreamedResource<Plane>("PrimitiveShapes.Shaders.PlaneFragmentShader.glsl"));
             CreateBuffer(bufferusageHint);
         }
     }

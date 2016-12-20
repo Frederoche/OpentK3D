@@ -14,10 +14,10 @@ namespace UnitTest
         public void Texture_OK()
         {
             //Act
-            ITexture texture = TextureFactory.Create(Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"), TextureWrapMode.ClampToEdge);
+            ITexture texture = TextureFactory.Create(Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"), TextureWrapMode.ClampToEdge);
 
             //Assert
-            Bitmap bitmap = new Bitmap(Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"));
+            Bitmap bitmap = new Bitmap(Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.Dirt.jpg"));
             VerifyImage(bitmap, texture.TextureImage);
         }
 

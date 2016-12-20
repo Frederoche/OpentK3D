@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Utilities
+namespace Utils
 {
-   
     public class Voronoi
     {
         public int Size { get; set; }
 
-        private Random _random;
+        private readonly Random _random;
         public int[,] Array;
         private List<Tuple<int, int>> _pointList;
 
@@ -76,7 +72,7 @@ namespace Utilities
             {
                 for (int j = 0; j < Size - 1; j++)
                 {
-                    int c = (int)((Array[i, j]));
+                    int c = Array[i, j];
                     image.SetPixel(i, j, Color.FromArgb(c, c, c));
                 }
             }

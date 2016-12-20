@@ -172,8 +172,8 @@ namespace Landscape
         private void InitTerrainShader()
         {
             
-            CreateShaderProgram(Utils.GetStreamedResource<ITerrain>("Landscape.Shaders.TerrainVertexShader.glsl"),
-                                Utils.GetStreamedResource<ITerrain>("Landscape.Shaders.TerrainFragmentShader.glsl"));
+            CreateShaderProgram(Utils.Utils.GetStreamedResource<ITerrain>("Landscape.Shaders.TerrainVertexShader.glsl"),
+                                Utils.Utils.GetStreamedResource<ITerrain>("Landscape.Shaders.TerrainFragmentShader.glsl"));
             
             CreateBuffer(BufferUsageHint.StaticDraw);
         }

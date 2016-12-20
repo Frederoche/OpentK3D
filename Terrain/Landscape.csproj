@@ -70,10 +70,6 @@
       <Project>{2c728317-9234-409c-8545-a9f658f80931}</Project>
       <Name>FrameBufferObject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Frustum\Frustum.csproj">
-      <Project>{7b8eb4ce-ea1c-4627-b97a-bff8e48243c3}</Project>
-      <Name>Frustum</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lights\Lights.csproj">
       <Project>{36f21647-e6ff-41f2-839c-f49d7ea75572}</Project>
       <Name>Lights</Name>

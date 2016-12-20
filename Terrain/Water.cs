@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using Textures;
 using System.Diagnostics;
 using Lights;
-using Utilities;
 using VertexBuffers;
 using FrameBufferObject;
 using Camera;
+using Utils;
 
 namespace Landscape
 {
@@ -46,7 +46,7 @@ namespace Landscape
             Width  = width;
             Height = height;
             Center = new Vector3(Width / 2, Height / 2, 0);
-            Vertices = new VBO[Width * Height];
+            Vertices = new Vbo[Width * Height];
             Indices  = new List<int>();
             DataTexture = TextureFactory.Create();
             WaveNumbers = new float[24, 4];
@@ -102,21 +102,21 @@ namespace Landscape
         public void Load()
         {
             
-            Foam = TextureFactory.Create(Utils.GetImageResource<ITerrain>("Landscape.Terrains.foam.jpg"), TextureWrapMode.Repeat);
+            Foam = TextureFactory.Create(Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.foam.jpg"), TextureWrapMode.Repeat);
 
             LoadWaveNumbersModerate();
             DataTexture.LoadData(SizedInternalFormat.Rgba16f, WaveNumbers);
 
             Texture3 = Foam;
             Texture4 = DataTexture;
-            Texture5 = TextureFactory.Create(Utils.GetImageResource<ITerrain>("Landscape.Terrains.IKT4l.jpg"), TextureWrapMode.Repeat);
+            Texture5 = TextureFactory.Create(Utils.Utils.GetImageResource<ITerrain>("Landscape.Terrains.IKT4l.jpg"), TextureWrapMode.Repeat);
             
 
             for (int i = 0; i < Width; i+=1)
             {
                 for (int j = 0; j < Height; j+=1)
                 {
-                    Vertices[i + j * Width] = new VBO
+                    Vertices[i + j * Width] = new Vbo
                       {
                           Position = new Vector3((float)i, (float)1, (float)j),
                           TexCoord = new Vector2((float)i / Width, (float)j / Height),
@@ -226,8 +226,8 @@ namespace Landscape
 
         private void InitWaterShader()
         {
-            CreateShaderProgram(Utils.GetStreamedResource<IWater>("Landscape.Shaders.WaterVertexShader.glsl"),
-                                Utils.GetStreamedResource<IWater>("Landscape.Shaders.WaterFragmentShader.glsl")
+            CreateShaderProgram(Utils.Utils.GetStreamedResource<IWater>("Landscape.Shaders.WaterVertexShader.glsl"),
+                                Utils.Utils.GetStreamedResource<IWater>("Landscape.Shaders.WaterFragmentShader.glsl")
                                 );
 
             CreateBuffer(BufferUsageHint.StaticDraw);

@@ -1,11 +1,9 @@
 ﻿using Camera;
 using FrameBufferObject;
-using Frustum;
 using Lights;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
-using Textures;
 
 namespace Landscape
 {

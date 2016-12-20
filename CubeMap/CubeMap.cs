@@ -4,7 +4,7 @@ using OpenTK;
 using System.Drawing;
 using CustomVertex;
 using OpenTK.Graphics.OpenGL;
-using Frustum;
+
 
 
 namespace EnvironmentMap
@@ -231,16 +231,13 @@ namespace EnvironmentMap
         }
 
 
-        public void Render(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, bool isShown, IFrustum frustum, float[] clipPlaneEquation)
+        public void Render(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, bool isShown,  float[] clipPlaneEquation)
         {
             if (isShown)
             {
                 Planes.ForEach(p => 
                 {
-                    if (frustum != null && frustum.SquareInFrustum(p.Points) == 0)
-                        p.IsRender = false;
-                    else
-                        p.IsRender = true;
+                     p.IsRender = true;
                 });
                 
                 Planes.ForEach(p => 

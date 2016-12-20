@@ -1,5 +1,4 @@
-﻿using Frustum;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using PrimitiveShapes;
 using System.Collections.Generic;
@@ -21,6 +20,6 @@ namespace EnvironmentMap
         int[] MyProgramHandler { get; set; }
 
         void Load();
-        void Render(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, bool isShown, IFrustum frustum = null, float[] clipPlaneEquation = null);
+        void Render(BeginMode mode, Matrix4 worldMatrix, Matrix4 projectionMatrix, Matrix4 viewMatrix, bool isShown,  float[] clipPlaneEquation = null);
     }
 }

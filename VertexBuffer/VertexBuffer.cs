@@ -8,7 +8,7 @@ using CustomVertex;
 using System.Runtime.InteropServices;
 using Utilities;
 using Lights;
-
+using Utils;
 
 
 namespace VertexBuffers
@@ -65,11 +65,11 @@ namespace VertexBuffers
             GL.GetUniformLocation(MyProgramHandler, "lightDiffuseColor");
             GL.GetUniformLocation(MyProgramHandler, "lightSpecularColor");
 
-            Utils.LoadTexture(Texture1, TextureUnit.Texture1, (int)TextureUnit.Texture0 - (int)TextureUnit.Texture0, "textureSample1", MyProgramHandler);
-            Utils.LoadTexture(Texture2, TextureUnit.Texture2, (int)TextureUnit.Texture1 - (int)TextureUnit.Texture0, "textureSample2", MyProgramHandler);
-            Utils.LoadTexture(Texture3, TextureUnit.Texture3, (int)TextureUnit.Texture2 - (int)TextureUnit.Texture0, "textureSample3", MyProgramHandler);
-            Utils.LoadTexture(Texture4, TextureUnit.Texture4, (int)TextureUnit.Texture3 - (int)TextureUnit.Texture0, "textureSample4", MyProgramHandler);
-            Utils.LoadTexture(Texture5, TextureUnit.Texture5, (int)TextureUnit.Texture4 - (int)TextureUnit.Texture0, "textureSample5", MyProgramHandler);
+            Utils.Utils.LoadTexture(Texture1, TextureUnit.Texture1, (int)TextureUnit.Texture0 - (int)TextureUnit.Texture0, "textureSample1", MyProgramHandler);
+            Utils.Utils.LoadTexture(Texture2, TextureUnit.Texture2, (int)TextureUnit.Texture1 - (int)TextureUnit.Texture0, "textureSample2", MyProgramHandler);
+            Utils.Utils.LoadTexture(Texture3, TextureUnit.Texture3, (int)TextureUnit.Texture2 - (int)TextureUnit.Texture0, "textureSample3", MyProgramHandler);
+            Utils.Utils.LoadTexture(Texture4, TextureUnit.Texture4, (int)TextureUnit.Texture3 - (int)TextureUnit.Texture0, "textureSample4", MyProgramHandler);
+            Utils.Utils.LoadTexture(Texture5, TextureUnit.Texture5, (int)TextureUnit.Texture4 - (int)TextureUnit.Texture0, "textureSample5", MyProgramHandler);
          
             GL.GenVertexArrays(1, out MyVertexArrayHandler);
             GL.BindVertexArray(MyVertexArrayHandler);
@@ -105,11 +105,11 @@ namespace VertexBuffers
                 GL.BindVertexArray(MyVertexArrayHandler);
                 GL.UseProgram(MyProgramHandler);
 
-                Utils.BindTexture(Texture1, TextureUnit.Texture1);
-                Utils.BindTexture(Texture2, TextureUnit.Texture2);
-                Utils.BindTexture(Texture3, TextureUnit.Texture3);
-                Utils.BindTexture(Texture4, TextureUnit.Texture4);
-                Utils.BindTexture(Texture4, TextureUnit.Texture5);
+                Utils.Utils.BindTexture(Texture1, TextureUnit.Texture1);
+                Utils.Utils.BindTexture(Texture2, TextureUnit.Texture2);
+                Utils.Utils.BindTexture(Texture3, TextureUnit.Texture3);
+                Utils.Utils.BindTexture(Texture4, TextureUnit.Texture4);
+                Utils.Utils.BindTexture(Texture4, TextureUnit.Texture5);
 
                 if (light != null)
                 {
