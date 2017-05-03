@@ -23,3 +23,6 @@ Use the following keys after running the program:
 
 # License
 https://github.com/Frederoche/OpentK3D/blob/master/Licence.md
+
+Demo:
+https://www.youtube.com/watch?v=18sElPTGKdc&index=5&list=PLX4dsjt6kyOgM_dQxCG6KUZ62ainphz5t
