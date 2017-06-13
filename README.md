@@ -22,7 +22,7 @@ Use the following keys after running the program:
 - 1,2,3,4,5 changes the skybox 
 
 # License
-https://github.com/Frederoche/OpentK3D/blob/master/Licence.md
+<a href="https://github.com/Frederoche/OpentK3D/blob/master/Licence.md">License</a>
 
-Demo:
-https://www.youtube.com/watch?v=18sElPTGKdc&index=5&list=PLX4dsjt6kyOgM_dQxCG6KUZ62ainphz5t
+
+<a href="https://www.youtube.com/watch?v=18sElPTGKdc&index=5&list=PLX4dsjt6kyOgM_dQxCG6KUZ62ainphz5t">Demo</a>
